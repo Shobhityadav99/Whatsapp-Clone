@@ -34,8 +34,14 @@ class _WhatsappHomeState extends State<WhatsappHome>
     body: new TabBarView(
       controller: _tabController,
       children: <Widget>[
-        
+        new CameraScreen(),
+        new ChatScreen(),
+        new StatusScreen(),
+        new CallScreen(),
       ],
-    ),);
+    ),
+    floatingActionButton: new FloatingActionButton(
+      onPressed: null,
+      backgroundColor: Theme.of(context).accentColor,),);
   }
 }
