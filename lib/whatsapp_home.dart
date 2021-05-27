@@ -20,26 +20,41 @@ class _WhatsappHomeState extends State<WhatsappHome>
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double yourWidth = width / 5;
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Whatsapp"),
         elevation: 0.7,
-        bottom: new TabBar(
-          controller: _tabController,
+        bottom: TabBar(
           indicatorColor: Colors.white,
+          indicatorSize: TabBarIndicatorSize.label,
+          isScrollable: true,
+          controller: _tabController,
           tabs: <Widget>[
-            new Tab(
-              icon: new Icon(Icons.camera_alt),
+            Container(
+              width: 20,
+              height: 50,
+              alignment: Alignment.centerLeft,
+              child: Icon(
+                Icons.camera_alt,
+              ),
             ),
-            new Tab(
-              text: "CHATS",
-            ),
-            new Tab(
-              text: "STATUS",
-            ),
-            new Tab(
-              text: "CALLS",
-            ),
+            Container(
+                width: yourWidth,
+                height: 50,
+                alignment: Alignment.center,
+                child: Text("CHATS")),
+            Container(
+                width: yourWidth,
+                height: 50,
+                alignment: Alignment.center,
+                child: Text("STATUS")),
+            Container(
+                width: yourWidth,
+                height: 50,
+                alignment: Alignment.center,
+                child: Text("CALLS"))
           ],
         ),
         actions: <Widget>[

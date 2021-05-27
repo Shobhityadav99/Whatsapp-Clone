@@ -30,7 +30,7 @@ class _ChatScreenState extends State<ChatScreen> {
             subtitle: new Container(
               padding: const EdgeInsets.only(top: 5.0),
               child: Text(DummyData[index].message,
-              style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold,fontSize: 15.0),),
+              style: TextStyle(color: Colors.grey,fontSize: 15.0),),
             ),
           )
         ],
