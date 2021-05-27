@@ -31,6 +31,11 @@ class _WhatsappHomeState extends State<WhatsappHome>
         ],
       ),
     ),
-    body: new Container(),);
+    body: new TabBarView(
+      controller: _tabController,
+      children: <Widget>[
+        
+      ],
+    ),);
   }
 }
