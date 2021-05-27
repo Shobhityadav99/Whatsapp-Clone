@@ -4,7 +4,7 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Center(
-      child: new Text("Camera",
+      child: new Text("Chats",
       style: TextStyle(fontSize: 20.0),),
     );
   }
