@@ -14,15 +14,15 @@ class StatusScreen extends StatelessWidget {
                 foregroundColor: Theme.of(context).primaryColor,
                 backgroundColor: Colors.grey,
                 backgroundImage: new NetworkImage(DummyData[0].avatarUrl),
-                radius: 30,
+                radius: 25,
                 child: Container(
                   alignment: Alignment.bottomRight,
                   child: CircleAvatar(
                     backgroundColor: Theme.of(context).accentColor,
-                    radius: 12,
+                    radius: 10,
                     child: Icon(
                       Icons.add,
-                      size: 12,
+                      size: 18,
                       color: Colors.white,
                     ),
                   ),
@@ -42,12 +42,55 @@ class StatusScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 15),
               ),
             )),
-        new Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Text("Recent Updates"),
-          ],
-        )
+        Container(
+          color: Colors.black12,
+          padding: EdgeInsets.all(10),
+          child: new Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Text("Recent Updates",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black54)),
+            ],
+          ),
+        ),
+        // new ListView.builder(
+        //   itemBuilder: (context, index) => new Column(
+        //     children: <Widget>[
+        //       new Divider(
+        //         height: 10.0,
+        //       ),
+        //       new ListTile(
+        //         leading: new CircleAvatar(
+        //           foregroundColor: Theme.of(context).primaryColor,
+        //           backgroundColor: Colors.grey,
+        //           backgroundImage: new NetworkImage(DummyData[index].avatarUrl),
+        //         ),
+        //         title: new Row(
+        //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //           children: <Widget>[
+        //             new Text(
+        //               DummyData[index].name,
+        //               style: TextStyle(fontWeight: FontWeight.bold),
+        //             ),
+        //             new Text(
+        //               DummyData[index].time,
+        //               style: TextStyle(color: Colors.grey, fontSize: 14.0),
+        //             )
+        //           ],
+        //         ),
+        //         subtitle: new Container(
+        //           padding: const EdgeInsets.only(top: 5.0),
+        //           child: Text(
+        //             DummyData[index].message,
+        //             style: TextStyle(color: Colors.grey, fontSize: 15.0),
+        //           ),
+        //         ),
+        //       )
+        //     ],
+        //   ),
+        //   itemCount: DummyData.length,
+        // ),
       ],
     );
   }
