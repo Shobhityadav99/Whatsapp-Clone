@@ -20,41 +20,42 @@ class _WhatsappHomeState extends State<WhatsappHome>
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double yourWidth = width / 5;
+    double orjWidth = MediaQuery.of(context).size.width;
+    double cameraWidth = orjWidth / 24;
+    double yourWidth = (orjWidth - cameraWidth) / 5;
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Whatsapp"),
         elevation: 0.7,
         bottom: TabBar(
-          indicatorColor: Colors.white,
-          indicatorSize: TabBarIndicatorSize.label,
-          isScrollable: true,
           controller: _tabController,
-          tabs: <Widget>[
+          indicatorColor: Colors.white,
+          labelPadding: EdgeInsets.symmetric(
+              horizontal: (orjWidth - (cameraWidth + yourWidth * 3)) / 8),
+          isScrollable: true,
+          tabs: [
             Container(
-              width: 20,
-              height: 50,
-              alignment: Alignment.centerLeft,
-              child: Icon(
-                Icons.camera_alt,
-              ),
+              child: Tab(icon: Icon(Icons.camera_alt)),
+              width: cameraWidth,
             ),
             Container(
-                width: yourWidth,
-                height: 50,
-                alignment: Alignment.center,
-                child: Text("CHATS")),
+              child: Tab(
+                text: "CHATS",
+              ),
+              width: yourWidth,
+            ),
             Container(
-                width: yourWidth,
-                height: 50,
-                alignment: Alignment.center,
-                child: Text("STATUS")),
+              child: Tab(
+                text: "STATUS",
+              ),
+              width: yourWidth,
+            ),
             Container(
-                width: yourWidth,
-                height: 50,
-                alignment: Alignment.center,
-                child: Text("CALLS"))
+              child: Tab(
+                text: "CALLS",
+              ),
+              width: yourWidth,
+            ),
           ],
         ),
         actions: <Widget>[
