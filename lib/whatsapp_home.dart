@@ -20,6 +20,17 @@ class _WhatsappHomeState extends State<WhatsappHome>
         appBar: new AppBar(
       title: new Text("Whatsapp"),
       elevation: 0.7,
-    ));
+      bottom: new TabBar(
+        controller: _tabController,
+        indicatorColor: Colors.white,
+        tabs: <Widget>[
+          new Tab(icon: new Icon(Icons.camera_alt),),
+          new Tab(text: "CHATS",),
+          new Tab(text: "STATUS",),
+          new Tab(text: "CALLS",),
+        ],
+      ),
+    ),
+    body: new Container(),);
   }
 }
