@@ -4,70 +4,101 @@ import 'package:whatsapp_clone/models/chat_model.dart';
 class StatusScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Column(
-      children: <Widget>[
-        new FlatButton(
-            padding: EdgeInsets.all(0),
-            onPressed: null,
-            child: new ListTile(
-              leading: CircleAvatar(
-                foregroundColor: Theme.of(context).primaryColor,
-                backgroundColor: Colors.grey,
-                backgroundImage: new NetworkImage(DummyData[0].avatarUrl),
-                radius: 25,
-                child: Container(
-                  alignment: Alignment.bottomRight,
-                  child: CircleAvatar(
-                    backgroundColor: Theme.of(context).accentColor,
-                    radius: 10,
-                    child: Icon(
-                      Icons.add,
-                      size: 18,
-                      color: Colors.white,
-                    ),
+    return new ListView(children: <Widget>[
+      new FlatButton(
+          padding: EdgeInsets.all(0),
+          onPressed: null,
+          child: new ListTile(
+            leading: CircleAvatar(
+              foregroundColor: Theme.of(context).primaryColor,
+              backgroundColor: Colors.grey,
+              backgroundImage: new NetworkImage(DummyData[0].avatarUrl),
+              radius: 25,
+              child: Container(
+                alignment: Alignment.bottomRight,
+                child: CircleAvatar(
+                  backgroundColor: Theme.of(context).accentColor,
+                  radius: 10,
+                  child: Icon(
+                    Icons.add,
+                    size: 18,
+                    color: Colors.white,
                   ),
+                ),
+              ),
+            ),
+            title: new Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                new Text(
+                  "My status",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+              ],
+            ),
+            subtitle: new Text(
+              "Tap to add status update",
+              style: TextStyle(fontSize: 15),
+            ),
+          )),
+      UpdatesBar(
+        label: "Recent updates",
+      ),
+      new ListView.builder(
+        shrinkWrap: true,
+        itemBuilder: (context, index) => new ListView(
+          children: <Widget>[
+            new ListTile(
+              leading: new CircleAvatar(
+                radius: 30,
+                backgroundColor: Theme.of(context).accentColor,
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(DummyData[index].avatarUrl),
+                  radius: 26,
                 ),
               ),
               title: new Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   new Text(
-                    "My status",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    DummyData[index].name,
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
-              subtitle: new Text(
-                "Tap to add status update",
-                style: TextStyle(fontSize: 15),
-              ),
-            )),
-        Container(
-          color: Colors.black12,
-          padding: EdgeInsets.all(10),
-          child: new Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Text("Recent Updates",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.black54)),
-            ],
-          ),
-        ),
-        Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height - 280,
-          child: new ListView.builder(
-            itemBuilder: (context, index) => new Column(
-              children: <Widget>[
-                new Divider(
-                  height: 10.0,
+              subtitle: new Container(
+                padding: const EdgeInsets.only(top: 5.0),
+                child: Text(
+                  "69 minutes ago",
+                  style: TextStyle(fontSize: 16.0),
                 ),
+              ),
+            ),
+            Divider(
+              color: Colors.grey,
+              height: 0.0,
+              thickness: 1,
+              indent: 85,
+              endIndent: 10,
+            ),
+          ],
+        ),
+        itemCount: DummyData.length - 2,
+      ),
+      UpdatesBar(
+        label: "Viewed updates",
+      ),
+      new ListView.builder(
+          shrinkWrap: true,
+          itemBuilder: (context, index) => new ListView(children: <Widget>[
                 new ListTile(
                   leading: new CircleAvatar(
-                    foregroundColor: Theme.of(context).primaryColor,
-                    backgroundColor: Colors.grey,
-                    backgroundImage: new NetworkImage(DummyData[index].avatarUrl),
+                    radius: 30,
+                    backgroundColor: Theme.of(context).accentColor,
+                    child: CircleAvatar(
+                      backgroundImage: NetworkImage(DummyData[index].avatarUrl),
+                      radius: 26,
+                    ),
                   ),
                   title: new Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -76,26 +107,48 @@ class StatusScreen extends StatelessWidget {
                         DummyData[index].name,
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      new Text(
-                        DummyData[index].time,
-                        style: TextStyle(color: Colors.grey, fontSize: 14.0),
-                      )
                     ],
                   ),
                   subtitle: new Container(
                     padding: const EdgeInsets.only(top: 5.0),
                     child: Text(
-                      DummyData[index].message,
-                      style: TextStyle(color: Colors.grey, fontSize: 15.0),
+                      "69 minutes ago",
+                      style: TextStyle(fontSize: 16.0),
                     ),
                   ),
-                )
-              ],
-            ),
-            itemCount: DummyData.length,
-          ),
-        ),
-      ],
+                ),
+                Divider(
+                  color: Colors.grey,
+                  height: 0.0,
+                  thickness: 1,
+                  indent: 85,
+                  endIndent: 10,
+                ),
+              ])),
+    ]);
+  }
+}
+
+class UpdatesBar extends StatelessWidget {
+  final String label;
+  const UpdatesBar({
+    Key key,
+    this.label,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.black12,
+      padding: EdgeInsets.all(10),
+      child: new Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Text(this.label,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.black54)),
+        ],
+      ),
     );
   }
 }
