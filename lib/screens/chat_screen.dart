@@ -12,9 +12,6 @@ class _ChatScreenState extends State<ChatScreen> {
     return new ListView.builder(
       itemBuilder: (context, index) => new Column(
         children: <Widget>[
-          new Divider(
-            height: 10.0,
-          ),
           new ListTile(
             leading: new CircleAvatar(
               foregroundColor: Theme.of(context).primaryColor,
@@ -41,6 +38,13 @@ class _ChatScreenState extends State<ChatScreen> {
                 style: TextStyle(color: Colors.grey, fontSize: 15.0),
               ),
             ),
+          ),
+          Divider(
+            color: Colors.grey,
+            height: 0.0,
+            thickness: 1,
+            indent: 70,
+            endIndent: 10,
           ),
         ],
       ),
