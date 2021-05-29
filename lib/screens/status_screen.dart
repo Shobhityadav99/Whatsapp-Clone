@@ -90,7 +90,8 @@ class StatusScreen extends StatelessWidget {
       ),
       UpdatesBar(
         label: "Viewed updates",
-      ),    ]);
+      ),
+    ]);
   }
 }
 
