@@ -90,47 +90,7 @@ class StatusScreen extends StatelessWidget {
       ),
       UpdatesBar(
         label: "Viewed updates",
-      ),
-      new ListView.builder(
-          shrinkWrap: true,
-          itemBuilder: (context, index) => new ListView(
-            shrinkWrap: true,
-            children: <Widget>[
-                new ListTile(
-                  leading: new CircleAvatar(
-                    radius: 30,
-                    backgroundColor: Theme.of(context).accentColor,
-                    child: CircleAvatar(
-                      backgroundImage: NetworkImage(DummyData[index].avatarUrl),
-                      radius: 26,
-                    ),
-                  ),
-                  title: new Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      new Text(
-                        DummyData[index].name,
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                  subtitle: new Container(
-                    padding: const EdgeInsets.only(top: 5.0),
-                    child: Text(
-                      "69 minutes ago",
-                      style: TextStyle(fontSize: 16.0),
-                    ),
-                  ),
-                ),
-                Divider(
-                  color: Colors.grey,
-                  height: 0.0,
-                  thickness: 1,
-                  indent: 85,
-                  endIndent: 10,
-                ),
-              ])),
-    ]);
+      ),    ]);
   }
 }
 
