@@ -4,7 +4,9 @@ import 'package:whatsapp_clone/models/chat_model.dart';
 class StatusScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new ListView(children: <Widget>[
+    return new ListView(
+      shrinkWrap: true,
+      children: <Widget>[
       new FlatButton(
           padding: EdgeInsets.all(0),
           onPressed: null,
@@ -47,6 +49,7 @@ class StatusScreen extends StatelessWidget {
       new ListView.builder(
         shrinkWrap: true,
         itemBuilder: (context, index) => new ListView(
+          shrinkWrap: true,
           children: <Widget>[
             new ListTile(
               leading: new CircleAvatar(
@@ -90,7 +93,9 @@ class StatusScreen extends StatelessWidget {
       ),
       new ListView.builder(
           shrinkWrap: true,
-          itemBuilder: (context, index) => new ListView(children: <Widget>[
+          itemBuilder: (context, index) => new ListView(
+            shrinkWrap: true,
+            children: <Widget>[
                 new ListTile(
                   leading: new CircleAvatar(
                     radius: 30,
