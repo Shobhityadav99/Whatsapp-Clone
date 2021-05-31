@@ -16,31 +16,36 @@ class _CameraScreenState extends State<CameraScreen> {
       _image = File(image.path);
     });
   }
+
   @override
   Widget build(BuildContext context) {
+    getImage();
     return new Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.fromLTRB(50, 270, 50, 0),
-            child:
-                _image == null ? Text("No Image Selected") : Image.file(_image),
-          ),
-          Container(
-            height: 60,
-            width: MediaQuery.of(context).size.width,
-            child: FlatButton(
-              onPressed: getImage,
-              child: Icon(
-                Icons.camera_alt,
-                size: 40,
-              ),
-              color: Theme.of(context).accentColor,
-            ),
-          )
-        ],
-      ),
-    );
+        body: Center(
+      child: Text("Opening Camera...."),
+    ));
   }
+
+  // body: Column(
+  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //   children: <Widget>[
+  //     Padding(
+  //       padding: EdgeInsets.fromLTRB(50, 270, 50, 0),
+  //       child:
+  //           _image == null ? Text("No Image Selected") : Image.file(_image),
+  //     ),
+  //     Container(
+  //       height: 60,
+  //       width: MediaQuery.of(context).size.width,
+  //       child: FlatButton(
+  //         onPressed: getImage,
+  //         child: Icon(
+  //           Icons.camera_alt,
+  //           size: 40,
+  //         ),
+  //         color: Theme.of(context).accentColor,
+  //       ),
+  //     )
+  //   ],
+  // ),
 }
