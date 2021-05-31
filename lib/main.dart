@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/screens/new_chat.dart';
 import 'package:whatsapp_clone/whatsapp_home.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
           primaryColor: new Color(0xff075E54),
           accentColor: new Color(0xff25D366)),
-      home: new WhatsappHome(),
+      home: new NewChat(),
     );
   }
 }
