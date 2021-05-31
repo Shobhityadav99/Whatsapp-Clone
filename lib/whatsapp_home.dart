@@ -1,9 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:whatsapp_clone/screens/call_screen.dart';
-// import 'package:whatsapp_clone/screens/camera_screen.dart';
+import 'package:whatsapp_clone/screens/camera_screen.dart';
 import 'package:whatsapp_clone/screens/chat_screen.dart';
 import 'package:whatsapp_clone/screens/status_screen.dart';
 
@@ -19,15 +16,6 @@ class _WhatsappHomeState extends State<WhatsappHome>
   void initState() {
     super.initState();
     _tabController = new TabController(length: 4, vsync: this, initialIndex: 1);
-  }
-
-  File _image;
-  final imagePicker = ImagePicker();
-  Future getImage() async {
-    final image = await imagePicker.getImage(source: ImageSource.camera);
-    setState(() {
-      _image = File(image.path);
-    });
   }
 
   @override
@@ -71,52 +59,101 @@ class _WhatsappHomeState extends State<WhatsappHome>
           ],
         ),
         actions: <Widget>[
-          new Icon(Icons.search),
-          new Padding(padding: const EdgeInsets.symmetric(horizontal: 5.0)),
-          new Icon(Icons.more_vert)
+          VertMenu(),
         ],
       ),
       body: new TabBarView(
         controller: _tabController,
         children: <Widget>[
-          new Scaffold(
-            body: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.fromLTRB(50, 270, 50, 0),
-                  child: _image == null
-                      ? Text("No Image Selected")
-                      : Image.file(_image),
-                ),
-                Container(
-                  height: 60,
-                  width: MediaQuery.of(context).size.width,
-                  child: FlatButton(
-                    onPressed: getImage,
-                    child: Icon(
-                      Icons.camera_alt,
-                      size: 40,
-                    ),
-                    color: Theme.of(context).accentColor,
-                  ),
-                )
-              ],
-            ),
-          ),
+          new CameraScreen(),
           new ChatScreen(),
           new StatusScreen(),
           new CallScreen(),
         ],
       ),
-      // floatingActionButton: new FloatingActionButton(
-      //   onPressed: null,
-      //   backgroundColor: Theme.of(context).accentColor,
-      //   child: new Icon(
-      //     Icons.message,
-      //     color: Colors.white,
-      //   ),
-      // ),
+      floatingActionButton: new FloatingActionButton(
+        onPressed: null,
+        backgroundColor: Theme.of(context).accentColor,
+        child: new Icon(
+          Icons.message,
+          color: Colors.white,
+        ),
+      ),
+    );
+  }
+}
+
+class VertMenu extends StatelessWidget {
+  const VertMenu({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return PopupMenuButton(
+      child: Icon(Icons.more_vert),
+      itemBuilder: (_) => [
+        PopupMenuItem(
+            child: FlatButton(
+                onPressed: null,
+                child: Text(
+                  'New group',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500),
+                ))),
+        PopupMenuItem(
+            child: FlatButton(
+                onPressed: null,
+                child: Text(
+                  'New broadcast',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500),
+                ))),
+        PopupMenuItem(
+            child: FlatButton(
+                onPressed: null,
+                child: Text(
+                  'Whatsapp Web',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500),
+                ))),
+        PopupMenuItem(
+            child: FlatButton(
+                onPressed: null,
+                child: Text(
+                  'Starred message',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500),
+                ))),
+        PopupMenuItem(
+            child: FlatButton(
+                onPressed: null,
+                child: Text(
+                  'Payments',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500),
+                ))),
+        PopupMenuItem(
+            child: FlatButton(
+                onPressed: null,
+                child: Text(
+                  'Settings',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500),
+                ))),
+      ],
     );
   }
 }
