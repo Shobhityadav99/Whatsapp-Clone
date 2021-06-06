@@ -1,5 +1,3 @@
-import 'dart:js_util';
-
 import 'package:flutter/material.dart';
 
 class NewChat extends StatefulWidget {
@@ -11,32 +9,64 @@ class _NewChatState extends State<NewChat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: RichText(
-          textAlign: TextAlign.left,
-          text: TextSpan(
-              text: "Select contact",
-              style: TextStyle(fontSize: 24),
-              children: <TextSpan>[
-                TextSpan(
-                  text: '\n690 contacts',
-                  style: TextStyle(
-                    fontSize: 14,
+        appBar: AppBar(
+          title: RichText(
+            textAlign: TextAlign.left,
+            text: TextSpan(
+                text: "Select contact",
+                style: TextStyle(fontSize: 24),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: '\n420 contacts',
+                    style: TextStyle(
+                      fontSize: 14,
+                    ),
                   ),
-                ),
-              ]),
-        ),
-        leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-              color: Colors.white,
+                ]),
+          ),
+          leading: IconButton(
+              icon: Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+              ),
+              onPressed: null),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.search,
+                color: Colors.white,
+              ),
+              onPressed: null,
             ),
-            onPressed: null),
-        actions: <Widget>[
-          VertMenu(),
-        ],
-      ),
-    );
+            VertMenu(),
+          ],
+        ),
+        body: Column(
+          children: <Widget>[
+            FlatButton(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Divider(
+                    height: 60,
+                  ),
+                  CircleAvatar(
+                    backgroundColor: Theme.of(context).accentColor,
+                    radius: 23,
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Text(
+                    'New Group',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                ],
+              ),
+              onPressed: null,
+            )
+          ],
+        ));
   }
 }
 
