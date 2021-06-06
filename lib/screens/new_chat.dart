@@ -42,21 +42,63 @@ class _NewChatState extends State<NewChat> {
           VertMenu(),
         ],
       ),
-      body: Column(
+      body: ListView(
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
         children: <Widget>[
-          FlatButton(
-            child: AddingNewChatandGroup(
-              icon: Icons.group,
-              label: 'New Group',
-            ),
-            onPressed: null,
+          Column(
+            children: <Widget>[
+              FlatButton(
+                child: AddingNewChatandGroup(
+                  icon: Icons.group,
+                  label: 'New Group',
+                ),
+                onPressed: null,
+              ),
+              FlatButton(
+                child: AddingNewChatandGroup(
+                  icon: Icons.person,
+                  label: 'New Contact',
+                ),
+                onPressed: null,
+              ),
+            ],
           ),
-          FlatButton(
-            child: AddingNewChatandGroup(
-              icon: Icons.person,
-              label: 'New Contact',
+          ListView.builder(
+            shrinkWrap: true,
+            itemBuilder: (context, index) => new Column(
+              children: <Widget>[
+                new ListTile(
+                  leading: new CircleAvatar(
+                    foregroundColor: Theme.of(context).primaryColor,
+                    backgroundColor: Colors.grey,
+                    backgroundImage:
+                        new NetworkImage(DummyData[index].avatarUrl),
+                  ),
+                  title: new Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      new Text(
+                        DummyData[index].name,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      new Text(
+                        DummyData[index].time,
+                        style: TextStyle(color: Colors.grey, fontSize: 14.0),
+                      )
+                    ],
+                  ),
+                  subtitle: new Container(
+                    padding: const EdgeInsets.only(top: 5.0),
+                    child: Text(
+                      DummyData[index].message,
+                      style: TextStyle(color: Colors.grey, fontSize: 15.0),
+                    ),
+                  ),
+                ),
+              ],
             ),
-            onPressed: null,
+            itemCount: DummyData.length,
           ),
         ],
       ),
